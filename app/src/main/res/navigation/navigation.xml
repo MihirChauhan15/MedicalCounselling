@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.medicalcounselling.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_createPostsFragment"
+            app:destination="@id/createPostsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPostsFragment"
+        android:name="com.example.medicalcounselling.fragments.CreatePostsFragment"
+        android:label="fragment_create_posts"
+        tools:layout="@layout/fragment_create_posts" />
+    <fragment
+        android:id="@+id/diseaseFragment"
+        android:name="com.example.medicalcounselling.fragments.DiseaseFragment"
+        android:label="fragment_disease"
+        tools:layout="@layout/fragment_disease" />
+</navigation>
