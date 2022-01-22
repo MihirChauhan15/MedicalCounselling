@@ -8,20 +8,86 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.medicalcounselling.fragments.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_showCommentFragment"
+            app:destination="@id/showCommentFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_abouUsFragment"
+            app:destination="@id/abouUsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_createPostsFragment"
             app:destination="@id/createPostsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_askSuggestionFragment"
+            app:destination="@id/askSuggestionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_memberFragment"
+            app:destination="@id/memberFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactUSFragment"
+        android:name="com.example.medicalcounselling.fragments.ContactUSFragment"
+        android:label="ContactUS"
+        tools:layout="@layout/fragment_contact_u_s" />
+    <fragment
+        android:id="@+id/showCommentFragment"
+        android:name="com.example.medicalcounselling.fragments.ShowCommentFragment"
+        android:label="Comments"
+        tools:layout="@layout/fragment_show_comment" >
+        <argument
+            android:name="postId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/myPostsFragment"
+        android:name="com.example.medicalcounselling.fragments.MyPostsFragment"
+        android:label="My Posts"
+        tools:layout="@layout/fragment_my_posts" >
+        <action
+            android:id="@+id/action_myPostsFragment_to_showCommentFragment"
+            app:destination="@id/showCommentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diseaseFragment"
+        android:name="com.example.medicalcounselling.fragments.DiseaseFragment"
+        android:label="Diseases"
+        tools:layout="@layout/fragment_disease" >
+        <action
+            android:id="@+id/action_diseaseFragment_to_showCommentFragment"
+            app:destination="@id/showCommentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/therapyFragment"
+        android:name="com.example.medicalcounselling.fragments.TherapyFragment"
+        android:label="TherapyFragment" >
+        <action
+            android:id="@+id/action_therapyFragment_to_showCommentFragment"
+            app:destination="@id/showCommentFragment" />
     </fragment>
     <fragment
         android:id="@+id/createPostsFragment"
         android:name="com.example.medicalcounselling.fragments.CreatePostsFragment"
-        android:label="fragment_create_posts"
-        tools:layout="@layout/fragment_create_posts" />
+        android:label="Create Posts"
+        tools:layout="@layout/fragment_post_create" />
     <fragment
-        android:id="@+id/diseaseFragment"
-        android:name="com.example.medicalcounselling.fragments.DiseaseFragment"
-        android:label="fragment_disease"
-        tools:layout="@layout/fragment_disease" />
+        android:id="@+id/abouUsFragment"
+        android:name="com.example.medicalcounselling.fragments.AbouUsFragment"
+        android:label="About Us"
+        tools:layout="@layout/fragment_abou_us" />
+    <fragment
+        android:id="@+id/askSuggestionFragment"
+        android:name="com.example.medicalcounselling.fragments.AskSuggestionFragment"
+        android:label="Ask_suggestion"
+        tools:layout="@layout/fragment_ask_suggestion" />
+    <fragment
+        android:id="@+id/memberFragment"
+        android:name="com.example.medicalcounselling.fragments.MemberFragment"
+        android:label="Members"
+        tools:layout="@layout/fragment_member" />
+
+
 </navigation>

@@ -2,17 +2,17 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/members"
+        android:id="@+id/memberFragment"
         android:title="Members"
         android:icon="@drawable/ic_baseline_people_24"/>
 
-    <item
-        android:id="@+id/track"
-        android:icon="@drawable/running"
-        android:title="Track" />
 
     <item
-        android:id="@+id/askSuggestion"
+        android:id="@+id/createPostsFragment"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:title="Add" />
+    <item
+        android:id="@+id/askSuggestionFragment"
         android:icon="@drawable/ic__4_hours_support"
         android:title="AskSuggestion" />
 </menu>

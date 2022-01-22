@@ -5,23 +5,20 @@
         android:icon="@drawable/ic_home__1_"
         android:title="Home"/>
     <item
-        android:id="@+id/menu_myPosts"
+        android:id="@+id/myPostsFragment"
         android:icon="@drawable/ic_paper_plane"
-
         android:title="My Posts"/>
     <item
         android:id="@+id/diseaseFragment"
         android:icon="@drawable/ic_malaria"
         android:title="Diseases"/>
     <item
-        android:id="@+id/menu_therapies"
+        android:id="@+id/therapyFragment"
         android:icon="@drawable/ic_reiki"
         android:title="Therapies"/>
 
-
-
     <item
-        android:id="@+id/menu_contactUs"
+        android:id="@+id/contactUSFragment"
         android:icon="@drawable/ic__4_hours_support"
         android:title="Contact Us"/>
 

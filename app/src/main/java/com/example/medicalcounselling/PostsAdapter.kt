@@ -1,23 +1,23 @@
 package com.example.medicalcounselling
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.medicalcounselling.Constants.Utils
-import com.example.medicalcounselling.Dao.PostsDao
+import com.example.medicalcounselling.fragments.HomeFragment
 import com.example.medicalcounselling.models.Posts
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class PostsAdapter(options: FirestoreRecyclerOptions<Posts>,val listener:IPostAdapter): FirestoreRecyclerAdapter<Posts, PostsAdapter.PostViewHolder>(options) {
+class PostsAdapter(options: FirestoreRecyclerOptions<Posts>, val listener: IPostAdapter): FirestoreRecyclerAdapter<Posts, PostsAdapter.PostViewHolder>(options) {
     class PostViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val postText: TextView = itemView.findViewById(R.id.postText)
         val userText: TextView = itemView.findViewById(R.id.userText)
@@ -27,6 +27,10 @@ class PostsAdapter(options: FirestoreRecyclerOptions<Posts>,val listener:IPostAd
         val likedButton: ImageView =itemView.findViewById(R.id.imageView3)
         val diseasesText:TextView =itemView.findViewById(R.id.diseasesText)
         val therapyText:TextView = itemView.findViewById(R.id.therapyText)
+        val addComment:ImageView =itemView.findViewById(R.id.addComment);
+        val comment:EditText =itemView.findViewById(R.id.comment)
+        val commentCount:TextView =itemView.findViewById(R.id.commentCount)
+        val showComment:TextView = itemView.findViewById(R.id.showComment)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsAdapter.PostViewHolder {
@@ -34,6 +38,14 @@ class PostsAdapter(options: FirestoreRecyclerOptions<Posts>,val listener:IPostAd
         viewHolder.likedButton.setOnClickListener{
             listener.OnClickLikeButton(snapshots.getSnapshot(viewHolder.adapterPosition).id)
         }
+        viewHolder.addComment.setOnClickListener {
+            listener.OnClickAddComment(snapshots.getSnapshot(viewHolder.adapterPosition).id,viewHolder.comment.editableText.toString())
+            viewHolder.comment.setText("")
+        }
+        viewHolder.showComment.setOnClickListener {
+            listener.OnClickShowComment(snapshots.getSnapshot(viewHolder.adapterPosition).id)
+        }
+
         return viewHolder
     }
 
@@ -44,6 +56,7 @@ class PostsAdapter(options: FirestoreRecyclerOptions<Posts>,val listener:IPostAd
         holder.diseasesText.text = model.disease
         holder.therapyText.text = model.therapy
         holder.likedBy.text = model.likedBy.size.toString()
+        holder.commentCount.text=model.comments?.size.toString()
         Glide.with(holder.userImage.context).load(model.createdBy.imageUrl).circleCrop().into(holder.userImage)
 
         val currUserId = Firebase.auth.currentUser!!.uid
@@ -58,6 +71,8 @@ class PostsAdapter(options: FirestoreRecyclerOptions<Posts>,val listener:IPostAd
 
     interface IPostAdapter{
         fun OnClickLikeButton(postId:String)
+        fun OnClickAddComment(postId: String,comment:String)
+        fun OnClickShowComment(postId: String)
     }
 }
 

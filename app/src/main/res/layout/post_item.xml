@@ -22,42 +22,42 @@
             app:layout_constraintEnd_toStartOf="@+id/userText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.208"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/userText"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/createdAt"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/diseasesText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/userImage"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/createdAt"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="2dp"
             android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/diseasesText"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/userImage"
-            app:layout_constraintTop_toBottomOf="@+id/userText" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
+            android:layout_width="24dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/showComment"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
 
@@ -66,10 +66,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView3" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/showComment"
+            app:layout_constraintStart_toEndOf="@id/imageView3"
+            app:layout_constraintTop_toBottomOf="@id/postText" />
 
         <TextView
             android:id="@+id/diseasesText"
@@ -84,13 +86,14 @@
             app:layout_constraintBottom_toTopOf="@+id/therapyText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/userImage"
-            app:layout_constraintTop_toBottomOf="@id/createdAt" />
+            app:layout_constraintTop_toBottomOf="@id/userText" />
 
         <TextView
             android:id="@+id/therapyText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="TextView"
@@ -99,22 +102,86 @@
             app:layout_constraintBottom_toTopOf="@+id/postText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/diseasesText" />
+            app:layout_constraintTop_toBottomOf="@+id/userImage" />
+
         <TextView
             android:id="@+id/postText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/therapyText" />
+
+
+        <TextView
+            android:id="@+id/showComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Show All Comments"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/likedByCount" />
+
+        <EditText
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:hint="Enter Comment....."
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/showComment" />
+
+        <ImageView
+            android:id="@+id/addComment"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/comment"
+            app:layout_constraintEnd_toEndOf="@id/comment"
+            app:layout_constraintTop_toTopOf="@id/comment"
+            app:srcCompat="@drawable/ic_paper_plane" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/showComment"
+            app:layout_constraintEnd_toStartOf="@id/commentCount"
+            app:srcCompat="@drawable/ic_baseline_message_24" />
+
+        <TextView
+            android:id="@+id/commentCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+
+            android:text="5"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/showComment"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

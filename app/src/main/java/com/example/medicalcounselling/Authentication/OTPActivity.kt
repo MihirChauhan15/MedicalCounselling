@@ -5,17 +5,21 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.medicalcounselling.Dao.UsersDao
 import com.example.medicalcounselling.MainActivity
 import com.example.medicalcounselling.databinding.ActivityOTPBinding
+import com.example.medicalcounselling.models.Users
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import java.util.*
 
 
 class OTPActivity : AppCompatActivity() {
     lateinit var binding: ActivityOTPBinding
     lateinit var mAuth: FirebaseAuth
     lateinit var verificationId:String
+    val IMAGE_URL = "https://firebasestorage.googleapis.com/v0/b/medical-counselling.appspot.com/o/avatar.png?alt=media&token=1c32b88e-5648-409e-afeb-38aaabf3c0ec";
 
     val TAG:String ="OTPActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +67,11 @@ class OTPActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     binding.progressBar2.visibility = View.INVISIBLE
+//                    var uniqueID = UUID.randomUUID().toString()
+//                    val users= Users(uniqueID,
+//                            "Anonymous",IMAGE_URL)
+//                    val userDao = UsersDao();
+//                    userDao.addUser(users);
                     sendToMain()
                     Toast.makeText(applicationContext, "Logged In successful", Toast.LENGTH_SHORT).show()
                 } else {

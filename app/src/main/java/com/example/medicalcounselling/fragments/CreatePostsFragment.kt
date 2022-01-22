@@ -2,28 +2,27 @@ package com.example.medicalcounselling.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
 import com.example.medicalcounselling.Dao.PostsDao
 import com.example.medicalcounselling.R
-import com.example.medicalcounselling.databinding.FragmentCreatePostsBinding
-
+import com.example.medicalcounselling.databinding.FragmentPostCreateBinding
+import java.util.*
 
 
 class CreatePostsFragment : Fragment() {
    lateinit var postDao:PostsDao
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentCreatePostsBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_create_posts, container, false)
+        val binding: FragmentPostCreateBinding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_post_create, container, false)
 
 
         postDao = PostsDao()
@@ -31,12 +30,11 @@ class CreatePostsFragment : Fragment() {
             val text = binding.postText.text.toString().trim()
             val disease = binding.diseasesText.text.toString().trim()
             val therapy = binding.therapyText.text.toString().trim()
-            Toast.makeText(context,text+disease+therapy, Toast.LENGTH_SHORT).show()
             if(text.isNotEmpty() && disease.isNotEmpty() && therapy.isNotEmpty()){
-                postDao.addPosts(text,disease,therapy)
+                postDao.addPosts(text, disease, therapy)
             }
             else{
-                Toast.makeText(context,"Please fill out necessary details", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Please fill out necessary details", Toast.LENGTH_SHORT).show()
             }
         }
         return binding.root
